@@ -1,0 +1,574 @@
+
+=== Journal Entry 2026-03-31T07:33:54.424103+00:00 ===
+2026-03-31-07-33-53-douyin-libmetasec-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm. Covers: hooking libsscronet.so and libmetasec_ml.so, identifying signing function sub_2A6E38, capturing X-Gorgon/X-Khronos/X-Argus/X-Ladon/X-Helios/X-Perseus/X-Medusa headers, building interactive log viewer, Frida Stalker instruction tracing, and comprehensive feasibility analysis of algorithm restoration approaches. Contains multiple Frida scripts (v1-v5 iterations), Python receivers, HTML viewers, analysis documents, and trace tooling.]
+
+
+
+
+=== Journal Entry 2026-04-01T06:11:44.558096+00:00 ===
+2026-04-01-06-11-43-douyin-signature-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm. Covers: hooking libmetasec_ml.so, identifying signing function sub_2A6E38, capturing 7 signature headers, building Frida Stalker trace toolchain (v1-v8 iterations), analyzing X-Gorgon algorithm structure, feasibility analysis of restoration approaches, and comprehensive reference documentation. Contains multiple Frida scripts, Python receivers, HTML viewers, analysis documents, and trace tooling with detailed debugging of Stalker caching issues.]
+
+
+
+
+=== Journal Entry 2026-04-02T11:31:43.520904+00:00 ===
+2026-04-02-11-31-42-douyin-signature-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm. Covers: hooking libmetasec_ml.so, identifying signing function sub_2A6E38, capturing 7 signature headers, building Frida Stalker trace toolchain (v1-v13 iterations), analyzing X-Gorgon algorithm structure (MD5-based), X-Ladon algorithm structure (AES T-table), feasibility analysis, and comprehensive reference documentation. Contains multiple Frida scripts, Python receivers, analysis of Stalker caching issues, Interceptor+Stalker compatibility problems, and detailed trace data analysis.]
+
+
+
+
+=== Journal Entry 2026-04-02T16:11:13.007329+00:00 ===
+2026-04-02-16-11-12-douyin-signature-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm (libmetasec_ml.so). Covers: hooking signing function sub_2A6E38, building Frida Stalker trace toolchain (v1→v17 iterations), analyzing X-Gorgon (MD5-based), X-Ladon (custom hash/accumulate), capturing 7 signature headers, diagnosing Stalker caching issues, Interceptor+Stalker compatibility problems, and detailed trace data analysis across 8 uploaded trace datasets.]
+
+
+
+
+=== Journal Entry 2026-04-02T16:19:33.927697+00:00 ===
+2026-04-02-16-19-33-douyin-signature-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm (libmetasec_ml.so). Covers: hooking signing function sub_2A6E38, building Frida Stalker trace toolchain (v1→v18 iterations), analyzing X-Gorgon (MD5-based), X-Ladon (custom hash/accumulate), capturing 7 signature headers, diagnosing Stalker caching issues, Interceptor+Stalker compatibility problems, and detailed trace data analysis across 9 uploaded trace datasets.]
+
+
+
+
+=== Journal Entry 2026-04-03T11:17:11.317560+00:00 ===
+2026-04-03-11-17-09-douyin-vmp-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm in libmetasec_ml.so. Covers: discovering the signing function sub_2A6E38, building Frida Stalker trace toolchain (v1→v19), full-trace analysis revealing a bytecode VM (VMP), VM handler classification (452 handlers), VM semantic trace development, and progressive algorithm recovery for 7 signature headers (X-Gorgon, X-Khronos, X-Argus, X-Ladon, X-Helios, X-Perseus, X-Medusa).]
+
+
+
+
+=== Journal Entry 2026-04-03T12:37:32.723790+00:00 ===
+2026-04-03-12-37-31-douyin-vmp-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm in libmetasec_ml.so. Covers: discovering the signing function sub_2A6E38, building Frida Stalker trace toolchain (v1→v19→full→vm_semantic v3), full-trace analysis revealing a bytecode VM (VMP), VM handler classification (452 handlers), VM semantic trace development, progressive algorithm recovery for 7 signature headers, and deep analysis of X-Ladon algorithm through VM data flow tracing and native call hooking.]
+
+
+
+
+=== Journal Entry 2026-04-03T15:56:30.131124+00:00 ===
+2026-04-03-15-56-29-douyin-vmp-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm in libmetasec_ml.so. Covers: discovering the signing function sub_2A6E38, building Frida Stalker trace toolchain (v1→v19→full→vm_semantic v3), full-trace analysis revealing a bytecode VM (VMP), VM handler classification (452 handlers), VM semantic trace development, progressive algorithm recovery for 7 signature headers, deep analysis of X-Ladon algorithm through VM data flow tracing and native call hooking, CRC64 table extraction, PRNG analysis, descriptor table parsing, and initial X-Helios investigation.]
+
+
+
+
+=== Journal Entry 2026-04-04T05:33:30.432124+00:00 ===
+2026-04-04-05-33-29-douyin-vmp-reverse-engineering.txt
+[Complete reverse engineering session of Douyin (TikTok China) app's signature algorithm in libmetasec_ml.so. Covers: VMP discovery, VM handler classification, VM semantic trace development, X-Ladon full algorithm recovery with 7 verified samples, X-Helios investigation including cipher chain analysis, AES key hunting through Stalker/Interceptor hooks, and descriptor table parsing. Contains extensive Frida hook scripts, trace analysis code, and algorithm documentation.]
+
+
+
+
+=== Journal Entry 2026-04-04T12:34:47.745558+00:00 ===
+2026-04-04-12-34-43-douyin-xhelios-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 签名算法逆向工程完整会话。涵盖 VMP 发现、VM handler 分类、X-Ladon 完整还原（7次验证）、X-Helios 深度分析（从 AES 假设到最终确认为 XOR 加密）。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原。]
+
+
+
+
+=== Journal Entry 2026-04-04T13:36:01.048046+00:00 ===
+2026-04-04-13-36-00-douyin-xhelios-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 签名算法逆向工程完整会话。涵盖 VMP 发现、VM handler 分类、X-Ladon 完整还原、X-Helios 深度分析（从 AES 假设到 XOR 加密确认、动态密钥发现、cipher dispatch 全量追踪）。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原。]
+
+
+
+
+=== Journal Entry 2026-04-05T10:29:54.455444+00:00 ===
+2026-04-05-10-29-53-douyin-xhelios-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 签名算法逆向工程完整会话。涵盖 VMP 发现、VM handler 分类、X-Ladon 完整还原、X-Helios 深度分析（从 AES 假设排除、XOR 字符串解混淆确认、cipher dispatch 追踪、VMP 内部加密定位、RAW36 捕获验证、body 生成机制追踪）。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原。]
+
+
+
+
+=== Journal Entry 2026-04-05T11:16:27.417127+00:00 ===
+2026-04-05-11-16-25-douyin-xhelios-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 签名算法逆向工程完整会话。涵盖 VMP 发现、VM handler 分类、X-Ladon 完整还原、X-Helios 深度分析（从 AES 假设排除、XOR 字符串解混淆确认、cipher dispatch 追踪、VMP 内部加密定位、RAW36 捕获验证、body 生成机制追踪、VMP 字节码白盒还原）。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原。]
+
+
+
+
+=== Journal Entry 2026-04-05T12:00:29.406345+00:00 ===
+2026-04-05-12-00-28-douyin-xhelios-full-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 签名算法完整逆向工程会话。涵盖 VMP 发现、VM handler 分类、X-Ladon 完整还原、X-Helios 深度分析（SPECK-128/128 密码识别、VMP 字节码白盒还原、密钥表分析、body 生成机制追踪）。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原。]
+
+
+
+
+=== Journal Entry 2026-04-05T15:34:12.085083+00:00 ===
+2026-04-05-15-34-09-douyin-xhelios-full-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 签名算法完整逆向工程会话。涵盖 VMP 发现、VM handler 分类、X-Ladon 完整还原、X-Helios 深度分析（SPECK-128/256 密码识别、VMP 字节码白盒还原、密钥表分析、body 生成机制追踪）、X-Gorgon/X-Argus 算法描述整合。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原。最终阶段性总论文档生成。]
+
+
+
+
+=== Journal Entry 2026-04-05T16:08:01.909386+00:00 ===
+2026-04-05-16-08-00-douyin-full-signature-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 完整签名算法逆向工程会话。涵盖 VMP 发现、VM handler 分类、X-Helios (SPECK-128/256) 100% 还原、X-Ladon 100% 还原、X-Argus 100% 还原、X-Gorgon 架构分析 (~85%)、密钥表构造验证 (34/34)、双层 VMP 架构确认、Gorgon Feistel 追踪 (确认为 VMP 内部运算非 native MD5)。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原、trace_8/trace_10 分析。]
+
+
+
+
+=== Journal Entry 2026-04-05T17:18:10.062673+00:00 ===
+2026-04-05-17-18-08-douyin-signature-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 完整签名算法逆向工程会话。涵盖 VMP 发现、VM handler 分类、X-Helios (SPECK-128/256) 100% 还原、X-Ladon 100% 还原、X-Argus 100% 还原、X-Gorgon 架构分析与多轮假设修正（Feistel 假设否定过程）、密钥表构造验证、双层 VMP 架构确认。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原。]
+
+
+
+
+=== Journal Entry 2026-04-06T04:42:58.937995+00:00 ===
+2026-04-06-04-42-58-douyin-signature-reverse-engineering.txt
+[抖音 App libmetasec_ml.so 完整签名算法逆向工程会话。涵盖 VMP 发现、VM handler 分类、X-Helios (SPECK-128/256) 100% 还原、X-Ladon 100% 还原、X-Argus 100% 还原、X-Gorgon 多轮假设修正最终确认 RC4 加密、密钥表构造验证、双层 VMP 架构确认。包含大量 Frida hook 脚本、Stalker trace 分析、ARM64 反汇编、加密算法还原、IDA 伪代码分析。]
+
+
+
+
+=== Journal Entry 2026-04-06T05:59:23.276298+00:00 ===
+2026-04-06-05-59-22-douyin-gorgon-deep-reverse-engineering.txt
+[抖音 App libmetasec_ml.so X-Gorgon 签名算法逆向工程的深度分析会话。涵盖 VMP 发现、VM handler 分类、X-Helios/X-Ladon/X-Argus 100% 还原回顾、X-Gorgon 多轮追踪（12+ 次 hook/trace 脚本）、黑盒差分、原始字节捕获、RC4 传输层确认、chunk 拼接分析、Stalker 追踪、全量知识审计。包含大量 Frida hook 脚本、ARM64 反汇编、IDA 伪代码分析、数学差分。]
+
+
+
+
+=== Journal Entry 2026-04-06T14:20:56.063856+00:00 ===
+2026-04-06-14-20-55-douyin-gorgon-deep-reverse-engineering.txt
+[抖音 App libmetasec_ml.so X-Gorgon 签名算法逆向工程的超深度分析会话。涵盖 VMP 发现、VM handler 分类、X-Helios/X-Ladon/X-Argus 100% 还原回顾、X-Gorgon 多轮追踪（20+ 次 hook/trace 脚本）、黑盒差分、RC4 传输层确认、chunk 拼接分析、Stalker 追踪、全量知识审计、VMP 字节码 dump、handler 函数定位、CRC-64 核心算法发现。包含大量 Frida hook 脚本、ARM64 反汇编、IDA 伪代码分析、数学差分。]
+
+
+
+
+=== Journal Entry 2026-04-06T16:58:18.834985+00:00 ===
+2026-04-06-16-58-18-douyin-gorgon-final-audit.txt
+[抖音 App libmetasec_ml.so 完整签名算法逆向工程会话。涵盖 X-Gorgon 6 轮追踪假设演进、SHA-1 发现与验证、sub_25B9D0 动态代码排除、Gorgon 5-chunk 二层结构确认、RC4 传输层确认、final_report.md 创建与多轮完善、全知识审计与下一步规划。包含大量 Frida hook 脚本创建、追踪数据分析、IDA 伪代码分析。]
+
+
+
+
+=== Journal Entry 2026-04-07T05:45:47.984693+00:00 ===
+2026-04-07-05-45-47-douyin-gorgon-post-transform-100percent.txt
+[抖音 libmetasec_ml.so 签名算法逆向工程 — X-Gorgon 后处理变换 100% 还原会话。涵盖 final_report.md 完善、全知识审计、路径 A/A2/A3/A4 渐进追踪、sub_29dc98 反分析跳板发现、20 轮环形滑动窗口算法完全还原 (双组 40/40 字节验证)、seed 来源未解、Phase E (sub_271f9c 等) 待追踪。包含大量 Frida 脚本 (vm_gorgon_transform/a2/a3/a4/a5)、ARM64 反汇编分析、IDA 伪代码解读、数学差分验证。]
+
+
+
+
+=== Journal Entry 2026-04-07T06:27:08.032587+00:00 ===
+2026-04-07-06-27-07-douyin-gorgon-rc4-discovery.txt
+[抖音 libmetasec_ml.so X-Gorgon 签名算法完整逆向工程会话 — Gorgon 后处理被确认为 "RC4-like 加密 + 20 轮环形滑动窗口"。20 轮变换完全还原并双向可逆。RC4 密钥结构基本定位 (5 常量字节 + 3 变化字节) 但动态 dump 验证仍有偏差。包含 IDA 伪代码分析、sub_29D950 核心函数暴露、多版本 Frida dump 脚本、密钥反推计算。]
+
+
+
+
+=== Journal Entry 2026-04-07T07:23:07.872230+00:00 ===
+2026-04-07-07-23-06-douyin-gorgon-100-percent.txt
+[抖音 X-Gorgon 签名算法逆向工程最终会话 — 达成 100% 完整还原, 13/13 样本 260/260 字节精确匹配。包含完整算法公式 (Broken-RC4 + 20 轮环形滑动窗口), 密钥构造公式, IDA 伪代码解析, Frida 动态追踪脚本, 以及独立 Python 实现。]
+
+
+
+
+=== Journal Entry 2026-04-07T08:07:02.259212+00:00 ===
+2026-04-07-08-07-01-douyin-gorgon-chunkx-trace.txt
+[抖音 X-Gorgon 签名算法逆向工程会话续集。前半部分完成 Gorgon 100% 还原 (broken-RC4 + 20 轮变换), 后半部分追踪 chunk_x (concat[4:8]) 的来源。包含 IDA 伪代码分析、多轮 Frida 动态追踪脚本演进 (dump5/chunkx/chunkx2/memscan/ptrdump/args/bt)、JSONL 数据分析。当前正在设计 backtrace 脚本验证 chunk_x 的生成位置。]
+
+
+
+
+=== Journal Entry 2026-04-09T11:47:50.547301+00:00 ===
+2026-04-09-11-47-49-douyin-medusa-perseus-trace.txt
+[抖音 X-Medusa/X-Perseus 签名逆向工程会话。前置上下文: Gorgon 100% 完成 (broken-RC4 + 20 轮变换 + chunk_x=MD5(body)[:4])。本次会话目标: 为追踪 Medusa/Perseus 完整生成过程设计新的 Frida trace 脚本。包含现有脚本缺陷分析、新脚本 vm_mp_trace.js v2 设计与实现 (进行中)。]
+
+
+
+
+=== Journal Entry 2026-04-09T13:29:16.512547+00:00 ===
+2026-04-09-13-29-15-douyin-medusa-vmtrace.txt
+[抖音 libmetasec_ml.so 逆向工程会话 - X-Medusa/X-Perseus 追踪脚本开发与 trace 数据分析。包含 Frida 脚本迭代 (v1→v4), final_report.md v2.1 审定补漏, 以及基于 trace_1.txt 对 Medusa 327 字节生成过程的深度分析 (定位到分段 copy 结构)。最新进展: 开始分析 vm_traces.zip 中的 VM semantic trace 以定位 VMP 内部加密过程。]
+
+
+
+
+=== Journal Entry 2026-04-10T06:17:17.775736+00:00 ===
+2026-04-10-06-17-16-douyin-medusa-vmtrace.txt
+[抖音 libmetasec_ml.so X-Medusa 逆向工程深度会话 — 从 vm_mp_trace.js 多版本迭代 (v1→v4 解决 Frida 卡死), 到 vm_medusa_trace.js 多版本演进 (v1→v6 解决 VMP 内部追踪), 最终完成 Medusa 结构模型审计。包含 Frida hook 设计原则、批处理策略、VM state 结构探测、VMP bytecode 基址定位尝试、4 样本交叉验证的完整结构假设审计。下一步需要修正 bytecodeBase 定位并深入分析 Medusa 加密算法。]
+
+
+
+
+=== Journal Entry 2026-04-10T06:51:29.628650+00:00 ===
+2026-04-10-06-51-28-douyin-medusa-vmp-trace.txt
+[抖音 libmetasec_ml.so X-Medusa VMP 加密追踪会话 — 从 Frida hook 迭代到 Stalker 修正, 完整的 Medusa 结构审计 + hook 方向核验 + v9 最新成功捕获的 Stalker 数据分析待进行]
+
+
+
+
+=== Journal Entry 2026-04-10T12:26:25.965073+00:00 ===
+2026-04-10-12-26-25-douyin-medusa-vmp-deep-analysis.txt
+[抖音 libmetasec_ml.so 逆向工程会话 - X-Medusa (327/328 字节) VMP 算法深度分析。贯通 VMP 三层架构 (VM handlers → 原语表 @ 0x36c970 → 第三层 blr 算子), 完整解读 18 轮 bit-packing 循环、Medusa 头部 TLV 结构、PKCS#7 workspace 等。含 v11/v12 Frida trace 脚本迭代, binary 反汇编 (capstone), trace 数据三样本 (m1/m2/m3) 结构对比。交付 v12 脚本待运行。]
+
+
+
+
+=== Journal Entry 2026-04-10T15:41:58.106881+00:00 ===
+2026-04-10-15-41-54-douyin-medusa-v14-analysis.txt
+[抖音 libmetasec_ml.so 逆向工程持续会话 — X-Medusa VMP 破解第四轮, 含 v14 Frida trace 数据分析。已达 95%+ 架构理解, 100% 样本重建能力, 最新发现 Medusa 为"URL query string 加密签名", 含 Phase 0/B 双 VM 实例结构, key-from-URL 确定性 schema。含 Python reconstructor 代码与多轮 Frida 脚本。]
+
+
+
+
+=== Journal Entry 2026-04-10T16:28:28.022820+00:00 ===
+2026-04-10-16-28-27-douyin-medusa-v16-analysis.txt
+[抖音 libmetasec_ml.so 逆向工程持续会话 — X-Medusa VMP 破解第六轮 (v16 乙路 Phase 0 全 handler trace). 已达 98%+ 架构理解, 100% 样本重建能力. 含完整 Frida v11-v16 脚本链, Python reconstructor, 5 版本终局报告. v16 揭示 4 层嵌套 VM 调用与 94 个 Phase 0 handler, 数据已至待深入分析.]
+
+
+
+
+=== Journal Entry 2026-04-12T06:09:06.673913+00:00 ===
+2026-04-12-06-09-05-douyin-five-param-validator.txt
+[抖音 libmetasec_ml.so 五参数实时验证工具开发会话 - 包含离线 Python 算法实现 + Frida 实时 hook 脚本 + 桥接器。从 final_report v2.1 起步,经过多轮实机调试,定位并修复多个 bug。最终建立完整的五参数算法审定报告。]
+
+
+
+
+=== Journal Entry 2026-04-12T06:37:56.246339+00:00 ===
+2026-04-12-06-37-55-douyin-helios-speck-debugging.txt
+[抖音 libmetasec_ml.so 五参数实时验证工具深度调试会话。Helios 算法逆向攻坚。包含 Frida JS hook + Python 离线算法 + 桥接器;多轮实机 hook 调试已定位 7 次 MD5 调用的全部语义;已实锤 SPECK key 派生方式与 final_report v2.1 所述不一致;含 13 条实机采样数据供离线 brute-force。]
+
+
+
+
+=== Journal Entry 2026-04-12T07:45:23.658148+00:00 ===
+2026-04-12-07-45-22-douyin-helios-head-provenance.txt
+[抖音 libmetasec_ml.so 五参数实时验证工具的深度调试会话续集。从 Helios 修复成功 (28/30 字节级匹配) 到深挖 HEAD 来源问题。包含已有过程文件审查发现的关键铁证 (Gorgon 13/13、Helios 30/30、Ladon 7/7),以及对 HEAD 源头的多假设并行验证 hook 设计。]
+
+
+
+
+=== Journal Entry 2026-04-12T08:53:03.403629+00:00 ===
+2026-04-12-08-53-02-douyin-head-vmp-trace.txt
+[抖音 libmetasec_ml.so 五参数签名逆向 — 从 Helios 算法 100% 还原 (28/28 字节级) 到深挖 HEAD 4 字节来源的攻坚会话。包含 8 轮渐进式 Frida hook 实验记录、IDA 静态反汇编 dispatch 表 dump、嵌套 VMP 架构铁证发现、以及最终路线 A (反汇编内层 VMP) 的启动准备。]
+
+
+
+
+=== Journal Entry 2026-04-12T13:36:18.667966+00:00 ===
+2026-04-12-13-36-17-douyin-inner-vmp-interpreter.txt
+[抖音 libmetasec_ml.so 内层 VMP 完整反汇编会话 — 从黑盒 VMP 推进到可执行 Python interpreter. 包含: 2 层 VMP 架构解码, dispatch table 完全 dump (外层 1542 + 内层 2075 handlers), 7 版语义提取器迭代, 精确指令集分类, 可运行的 Python interpreter (seq 137/7 实测通过), 149 个真实 bytecode dump 分析, HEAD 算法分布定位在 5 个配对 VM 调用. 距完全离线复现 HEAD 还需 1-2 周填 CALL_EXTERN/CALL_OUTER_VM 语义.]
+
+
+
+
+=== Journal Entry 2026-04-12T14:01:32.761506+00:00 ===
+2026-04-12-14-01-32-douyin-vmp-slot-header-mechanism.txt
+[抖音 libmetasec_ml.so 内层 VMP 反汇编深入会话 — slot-header 机制发现与重做. 包含: 之前 v3 interpreter 在 142 真实 dump 上仅 1.4% 准确率的诊断, slot_0 作为 header 的架构澄清, 464 个复合 handler 的 ptr 访问模式提取, 每个子 IR 语义分类, 完整工具链更新. 距完全离线 HEAD 复现: 子 IR dispatch 模拟 + CALL 语义 (2-4 周).]
+
+
+
+
+=== Journal Entry 2026-04-12T14:33:04.924164+00:00 ===
+2026-04-12-14-33-04-2026-04-12-douyin-vmp-slot-header-deep-dive.txt
+[抖音 libmetasec_ml.so 内层 VMP slot-header 机制重做与学术性深入研究. 用户提供 142 dumps 后验证 interpreter 准确率从 1.4%→2.7% (v4) 翻倍但仍低, 定位到 slot-header 指针机制 + 多轮修正语义 + 识别 64-bit 常量加载 + 为用户输出 3 个新 Frida dump 脚本. 用户明确要求"学术完整理解", 继续深入.]
+
+
+
+
+=== Journal Entry 2026-04-12T15:29:37.395862+00:00 ===
+2026-04-12-15-29-36-douyin-vmp-interpreter-progress.txt
+[抖音 libmetasec_ml.so 内层 VMP interpreter 学术深入分析. 经过多轮 Frida dump + 静态反汇编, slot-header 机制完全理解, 语义派生出现具体 bug, 本次通过 per-step tracer 实机对比首次成功验证前 8 步 PC/opcode 正确, 定位 2 个具体 bug (mem init + backward branch). 包含所有 Frida JS 脚本路径, Python interpreter 演化, 诊断数据.]
+
+
+
+
+=== Journal Entry 2026-04-12T17:23:27.222411+00:00 ===
+2026-04-12-17-23-26-douyin-vmp-v8-interpreter.txt
+[抖音 libmetasec_ml.so 内层 VMP interpreter 学术深入分析。从 v6 (2.2% 准确率) 迭代到 v8 (seq 7 100%, seq 4/5 40%),通过 per-step tracer 定位多个语义 bug (op=187 BRANCH_NE, OR_IMM16 dst=b1, LSL_SXT src=b1, pc_step 合并, is_compound 阈值降到 1)。mem dump 用 pointer 检测 bug 找到的 ASCII 输入 "1776013767-1588093228-1128" 确认 VM 做 MD5。剩余 seq 0% 因 CALL_EXTERN/CALL_OUTER 黑盒。包含所有 Frida JS/Python 脚本路径、interpreter 演化、诊断数据。]
+
+
+
+
+=== Journal Entry 2026-04-12T17:53:15.642673+00:00 ===
+2026-04-12-17-53-14-douyin-vmp-v8-compound-irs.txt
+[抖音 libmetasec_ml.so 内层 VMP interpreter 逆向工程的持续分析。本阶段核心突破: per_step+mem 合并 dumper 成功抓取数据后, 用 oracle-based 诊断法发现复合 handler sub-IR 语义是静态固定在 handler 内 (非 data slot next_op). ROR 分为两种语义 (非标准 vs ARM ROR64). 生成了 handler_compound_irs_v4.json. seq 4 控制流正确但仍循环需更精确的 sub_IR 派生覆盖. 包含所有 Frida/Python 脚本路径、interpreter 演化、5 perfect seqs 里程碑.]
+
+
+
+
+=== Journal Entry 2026-04-13T06:34:13.849319+00:00 ===
+2026-04-13-06-34-13-douyin-vmp-head-reproduction.txt
+[抖音 libmetasec_ml.so 内层 VMP 深度逆向 - HEAD (X-Perseus) 签名生成逻辑复原研究。包含 CALL_OUTER_VM 纯函数验证、外层 VM 查表学习、compound handler v7 派生器、Frida 综合 dumper、5 个完美 hash 函数复现、多轮交互记录。]
+
+
+
+
+=== Journal Entry 2026-04-13T10:36:24.871318+00:00 ===
+2026-04-13-10-36-24-douyin-vmp-head-reproduction.txt
+[抖音 libmetasec_ml.so 内层 VMP 深度逆向 - HEAD (X-Perseus) 签名生成逻辑复原研究。包含 CALL_OUTER_VM 纯函数验证、外层 VM 查表学习、compound handler v7 派生器、Frida 综合 dumper、5 个完美 hash 函数复现、多轮交互记录。最新轮: BRANCH_UNCOND/MEM_LOAD_S32 修复, compound BRANCH cmp 子 IR 实现, vm9 SHA chain 死循环之根因诊断 (op=528 sub_2CADF4 之内部 mini-VM)。]
+
+
+
+
+=== Journal Entry 2026-04-13T11:03:09.808079+00:00 ===
+2026-04-13-11-03-09-douyin-vmp-head-direction-audit.txt
+[抖音 libmetasec_ml.so 内层 VMP 逆向 — HEAD (X-Helios) 复原研究。本会话之核心转折: 经审前所析之 Helios 文牍, 确认当前内层 VMP vm9..vm20 之 SHA chain 探究方向已偏 (实属 X-Medusa/X-Perseus 而非 X-Helios)。回顾 head_provenance 之历史结论: HEAD 不来自 md5#1 digest, 不来自 hash20, 在内存中无副本, 真正生成机制位于 m11+0x20 之写入时序未明。包含: interpreter 修正 (BRANCH_UNCOND/MEM_LOAD_S32/compound BRANCH cmp), CALL_EXTERN mini-VM 难题, 5 个完美 hash 函数 (vm4/vm5/vm7), 完整文档审查链。最新阻碍: vm9..vm20 死循环根因 op=528 之 sub_2CADF4 mini-dispatcher 写 r[27], 但此与 X-Helios HEAD 无关。]
+
+
+
+
+=== Journal Entry 2026-04-13T11:46:52.471650+00:00 ===
+2026-04-13-11-46-51-douyin-head-outer-pk3d-probe.txt
+[抖音 libmetasec_ml.so 逆向 — 深掘内层 VMP vm1..vm8 以复原 X-Helios HEAD (4字节)。本阶段追踪 outer call pk=0x3d 之 HEAD 产生机制, 写 Frida hook v1→v2→v3→v4 迭代抓 HEAD outer 之 input buffer。含精度 bug 诊断 (JS Number 丢失 u64 精度) 与 isHeapPtr 修复。保存完整 hook script + runner + offline hash analyzer。]
+
+
+
+
+=== Journal Entry 2026-04-13T15:19:36.570585+00:00 ===
+2026-04-13-15-19-35-douyin-head-vm3-pk23-breakthrough.txt
+[抖音 libmetasec_ml.so 逆向之 X-Helios HEAD 攻坚关键突破阶段. 含 v3→v7 Frida hook 迭代历程, 跨 6 sign 之 HEAD 真源确证 (vm3.outer1 pk=0x23 PC=0), 以及后续 hash 算法 offline 识别之残局 (hash input buffer 未完全定位). 含完整 Frida JS + Python runners, dispatch chain 追踪, L1/L2 ptr recursive dump 设计, 以及跨 sign 之 mem diff 分析.]
+
+
+
+
+=== Journal Entry 2026-04-13T16:07:25.859650+00:00 ===
+2026-04-13-16-07-24-douyin-head-vm3-rand-discovery.txt
+[抖音 libmetasec_ml.so X-Helios HEAD 字段逆向之最终突破阶段。从假设 HEAD 是 hash 算法到经数据驱动 (v6) 定位 vm3.outer1 (pk=0x23, PC=0)，经 v7/v7_1 打通 dispatch 链 (slot→u1→table→handler_entry→handler_index→actual_fn=0x29f0dc CF21)，经 v8 直 hook hash fn @ 0x26ff30 跨 sig diff，最终经严审 (readelf -r) 确证 HEAD = libc rand() 之返回值 (非 hash)。本会话末尾用户上传 five_param_offline.py + five_param_realtime.js 准备更新文档。含完整 Frida JS + Python runners (v3..v8 + v7_1)、ARM64 disasm、PLT 符号查询、跨 sig 验证。]
+
+
+
+
+=== Journal Entry 2026-04-14T11:25:35.130281+00:00 ===
+2026-04-14-11-25-34-douyin-medusa-audit.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法之审校会话。用户提供 medusa_tar.gz (12 版 Frida trace 脚本 v11..v18e, events jsonl, 9 组真实 Medusa hex dump) 与 log.zip (6 版报告 v3..v6 + deep_analysis.md + reconstructor.py + phase0_emulator.py)。Claude 审之, 既承接前 HEAD 反向工程之教训 (HEAD = rand() 终破), 又细审 Medusa 之 v6 报告结论之真伪, 发现一重大突破: HEAD 之 5 个 u32 实为 ts ^ 4 常量之冗余编码。此会话承接 douyin 签名逆向长期项目 (journal 记载 ~20 session, 2026-03-31 至 2026-04-13)。]
+
+
+
+
+=== Journal Entry 2026-04-14T12:00:26.578862+00:00 ===
+2026-04-14-12-00-25-douyin-medusa-audit.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法之审校与还原会话。承接前 X-Helios HEAD 反向工程之果 (HEAD = libc rand()), 转入 X-Medusa 之审校。用户提供 medusa_tar.gz (12 版 Frida trace 脚本 v11..v18e + events jsonl + 9 组真实 Medusa hex dump) 与 log.zip (v3..v6 报告 + reconstructor + emulator)。Claude 严审之, 破 v6 报告之 10 处误, 得 HEAD 之核心新发现: HEAD 5 个 u32 = ts ⊕ 4 常量 (10/10 sample 验证, 离线生成代码已完). 反汇 3 个 Phase 0 新 handler. 已交付 medusa_audit_report.md / medusa_reconstructor_v2.py / vm_medusa_phase0_v19.js Frida 脚本待运行抓 input buffer。]
+
+
+
+
+=== Journal Entry 2026-04-14T15:40:14.644343+00:00 ===
+2026-04-14-15-40-13-douyin-medusa-frida-capture.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法之 Frida 反向工程会话。承 HEAD 阶段 + medusa_audit 之成果, 本阶段通过 Frida 脚本迭代 v19→v25 抓 Medusa 运行时数据, 识得 5-layer sign pipeline + device-specific input (32-hex tokens, APK hashes, keva 路径). 4 XOR 常量之 source 仍未解 (不在 binary, 不在 keva). HEAD 公式 10+ sample 100% 验证. 下一步需 hook sub_2A6E38 ctx 周边 heap 以抓 4 const heap 位置。]
+
+
+
+
+=== Journal Entry 2026-04-14T16:29:48.512483+00:00 ===
+2026-04-14-16-29-47-douyin-medusa-phase3.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法之 Frida 反向工程会话第三阶段。承前 Phase 0 (v13-v18e 之 10 sample) + Phase 1/2 (v20-v25 之 5 hook 数据驱动), 本阶段聚焦 4 XOR const 之 heap 源探 (v26-v27) + MID-B/MID-E 之 staging buffer 定位 (v28). 重大发现: 19B static key "bb830aca0694edbd0cabcbcaddac1b0ae18ee2" 紧邻 MID-E 之 3 heap 位置, 证 MID-E 是某 HMAC/hash 之 output 片段。v29 脚本已写, 待跑验跨 session 恒性。]
+
+
+
+
+=== Journal Entry 2026-04-16T11:37:08.991301+00:00 ===
+2026-04-16-11-36-59-douyin-medusa-phase4-mide-sha256.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法 Frida 反向工程会话第四阶段。承 Phase 0-3 (v13-v29 共 17+ sample, 含 16 byte 4 XOR const 已锁定, HEAD 公式 100% 离线), 本阶段聚焦 v28/v29 之 heap fingerprint 扫描 + trace_1 (v10) 之 596104 events 深析。关键突破: MID-E 为 SHA-256 输出之末 13 字节。含 Frida 脚本 v28/v29 及数据分析之完整脉络。]
+
+
+
+
+=== Journal Entry 2026-04-16T12:13:07.888867+00:00 ===
+2026-04-16-12-13-06-douyin-medusa-phase4-v30-summary.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法 Frida 反向工程会话第四阶段 v30 完结篇。承 Phase 0-3 (v13-v29, 17+ sample)， 本阶段新增 v30 (JNI RegisterNatives hook 实验), 察 traces_full.zip (trace_1 430MB + jsonl 9115 snapshots), 反汇 sub_2A6E38 得 VM interpreter 结构, 并 作阶段 综述报告。用户交流偏文言。]
+
+
+
+
+=== Journal Entry 2026-04-17T05:40:27.343605+00:00 ===
+2026-04-17-05-40-26-douyin-medusa-phase4-v31-deep-trace.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法 Frida 反向工程会话。承 Phase 0-4 (v13-v30), 本阶段新增 v31b-v31g 共 6 个实验, 通过 Stalker/Interceptor 逐层追踪 VM memcpy opcode handler → inline memcpy → sub_2A3274 (MID-E compute func), 最终首次直读 MID-E 之 32-byte output buffer. 含 完整 VM opcode trace (628 ops/sign), handler semantics table, HEAD XOR 微观结构破解, Medusa 6-field assembly 之 精确 byte-level 验证.]
+
+
+
+
+=== Journal Entry 2026-04-17T11:48:37.553047+00:00 ===
+2026-04-17-11-48-36-douyin-medusa-v31-gf28-matrix-solved.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法 Frida 反向工程会话。承 Phase 0-4 (v13-v30) 及前次 v31b-v31g 会话, 本阶段新增 v31b(重写)-v31j_track 共 20+ 实验, 完成: VM opcode 完整 trace (628 ops/sign), handler semantics table (14+ handlers), HEAD XOR 微观结构破解, Medusa 6-field assembly 之精确 byte-level 验证, sub_2A3274 = MID-E compute func 确认, 双层 VM 架构解构 (338 handler L2 VM), GF(2^8) round 识别 (0x1B reduction polynomial), 16B input + 32B output 采集, 最终 GF(2^8) 矩阵 M[32×16] + 常数 c[32] 完全求解 (17/17 验证通过)。含完整 Frida JS + Python runners, GF(2^8) matrix solver, 离线 MID-E calculator。]
+
+
+
+
+=== Journal Entry 2026-04-18T06:28:43.682671+00:00 ===
+2026-04-18-06-28-43-douyin-medusa-v31-gf28-matrix-complete.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法 Frida 反向工程会话。承 Phase 0-4 (v13-v30) 及前次 v31b-v31j 会话, 本阶段完成: v31k 系列 (hash pipeline 70 transitions 完整揭示, handler 语义表), v31l 系列 (M1[20×52] + T[19×19] + M2[32×19] 三层矩阵合成为 M_total[32×52] 端到端 20/20 match, 52B input 组装追踪, src context 分析, URL+52B 黑箱 hash 比对), 阶段总述 307 行。含完整 Frida JS + Python runners, GF(2^8) matrix solver, 离线 MID-E calculator。]
+
+
+
+
+=== Journal Entry 2026-04-18T11:49:04.212569+00:00 ===
+2026-04-18-11-49-03-douyin-medusa-v31-gf28-52b-hash-vm-bytecode.txt
+[抖音 libmetasec_ml.so X-Medusa 签名算法 Frida 反向工程会话。承 Phase 0-4 (v13-v30) 及前次 v31b-v31l 会话, 本阶段完成: v31k 系列 (hash pipeline 70 transitions 完整揭示, handler 语义表), v31l 系列 (M1[20×52] + T[19×19] + M2[32×19] 三层矩阵合成为 M_total[32×52] 端到端 20/20 match, 52B input 组装追踪, src context 分析, URL+52B 黑箱 hash 比对), SHA-1+RC4 session state 探查, 階段總述 307 行, Helios VM bytecode 遺產整理 + Medusa L2 639 opcodes 完整反組譯 (100% handler 覆蓋)。含完整 Frida JS + Python runners, GF(2^8) matrix solver, 离线 MID-E calculator。]
+
+
+
+
+=== Journal Entry 2026-04-18T15:55:30.767404+00:00 ===
+2026-04-18-15-55-29-douyin-medusa-v31m-sm3-md5-sha1-rc4-identified.txt
+[抖音 X-Medusa 签名算法逆向工程会话。承前 v31k/v31l 之 GF(2^8) 矩阵与 hash pipeline 70 transitions 成果，本阶段完成: (1) Helios VM bytecode 遗产整理与 Medusa L2 639 opcodes 100% 反组译; (2) SHA-1+RC4 session state 探查; (3) OLLVM sub_25B7B0 破解 = 标准 MD5 (15/15 验证); (4) ★★★ SM3 国密哈希确证 (5/5 match Block A+B); (5) Block C 生成机制暴搜 (未识); (6) v31m 系列 v1-v9 共 9 版 Frida 实验。含完整 Frida JS + Python runners, SM3 compression 验证代码。]
+
+
+
+
+=== Journal Entry 2026-04-19T07:05:04.114403+00:00 ===
+2026-04-19-07-05-03-douyin-medusa-v31m-sm3-md5-blockc-full-trace.txt
+[抖音 X-Medusa 簽名算法逆向工程 Phase 0 完整會話。涵蓋: Helios VM bytecode 遺產整理、L2 639 opcodes 100% 反組譯、SM3 國密哈希確證 (5/5 match Block A+B)、MD5 確證 (15/15)、SHA-1+RC4 session state、Block C = X-SS-STUB = MD5(POST body) 突破、SM3 message 完整拼接格式、GF(2^8) M_total 20/20、v31m v1-v20 共 20 版 Frida 實驗、完整運算 trace 文檔撰寫。含完整 Frida JS + Python runners。]
+
+
+
+
+=== Journal Entry 2026-04-19T12:56:05.153817+00:00 ===
+2026-04-19-12-56-04-douyin-medusa-v31m-midb-blockc-sm3iv-complete.txt
+[抖音 X-Medusa 簽名算法逆向工程 Phase 0 完整會話 (v31m v10-v23)。涵蓋: Block C = X-SS-STUB = MD5(POST body) 突破、SM3 IV = 標準國密 IV 確證、SM3 message 完整拼接、MID-B 與 BODY trailer 共源發現、全離線 MID-E 算法確立、Phase 0 定本撰寫、全局總述更新。含 v10-v23 共 14 版 Frida 實驗 + Python recv。]
+
+
+
+
+=== Journal Entry 2026-04-20T12:12:46.370770+00:00 ===
+2026-04-20-12-12-39-douyin-medusa-v31m-midb-body-reverse.txt
+[抖音 X-Medusa 簽名算法逆向工程: Phase 0 完結 (SM3 IV 確證) + MID-B 逆向 (v21-v30, 確證為 PRNG) + BODY 逆向策略制定 + 舊 transcript 深度檢索 (Phase 3 v16 XOR/STB/LDB 加密管線分析)。含 grand summary 與 body strategy 文檔更新。]
+
+
+
+
+=== Journal Entry 2026-04-20T15:22:42.068876+00:00 ===
+2026-04-20-15-22-41-douyin-medusa-v31m-body-cipher-pipeline.txt
+[抖音 X-Medusa 签名逆向工程: v31m v21-v34 完整追踪。涵盖 MID-B=PRNG 确证(v21-v30)、BODY 三层加密管线破解(v31-v34)、4B repeating XOR mask 发现与溯源、BODY header=PRNG[3] 确证、Phase 3 transcript 深掘、grand summary 及 body strategy 文档更新。]
+
+
+
+
+=== Journal Entry 2026-04-21T06:23:19.674489+00:00 ===
+2026-04-21-06-23-18-douyin-medusa-v31m-body-cipher-pipeline.txt
+[抖音 X-Medusa 签名逆向工程: v31m v21-v42 完整追踪。涵盖 MID-B=PRNG 确证、BODY 三层加密管线破解(Layer 2: 4B repeating XOR mask, Layer 3: bit-packing)、mask 溯源至 L2 VM register r[8]、Layer 1 sponge 结构解剖(179 XOR/round, handler 序列固定)、Phase B data flow mapping(URL×2 + 272B context + key buffers)。含大量 Frida 脚本与 Python 分析器。]
+
+
+
+
+=== Journal Entry 2026-04-21T11:39:35.919035+00:00 ===
+2026-04-21-11-39-35-douyin-medusa-v31m-layer1-arx-sponge.txt
+[抖音 X-Medusa 簽名逆向工程 v31m v21-v48: BODY 三層加密管線完整破解、ARX sponge permutation 完整指令表提取、單輪驗證嘗試（含 register file 錯位問題診斷）。涵蓋大量 Frida hook 腳本與 Python 分析器。]
+
+
+
+
+=== Journal Entry 2026-04-24T11:04:03.927131+00:00 ===
+2026-04-24-11-04-03-douyin-medusa-v31m-permutation-rf5-mystery.txt
+[抖音 X-Medusa v31m 逆向工程: Layer 1 ARX sponge permutation 完整指令表提取、h0/h3/h18 handler 反彙編、RF[5] 隱藏寫入源追蹤（含 nilpotent 數學矛盾）、SO 全域 STR-to-x23 搜索、round-boundary state mapping。涵蓋 v44-v66 之 Frida hook 腳本與分析。]
+
+
+
+
+=== Journal Entry 2026-04-25T06:26:00.934608+00:00 ===
+2026-04-25-06-26-00-douyin-medusa-v31m-arx-sponge-complete.txt
+[抖音 X-Medusa v31m 逆向工程: v44-v83 共 39 輪 Frida 實驗, 完成 Layer 1 ARX sponge permutation 之 MAIN/FRONT/TAIL/Init 全操作序列提取, 含 nilpotent 數學矛盾之發現與解決 (ADD@0x2b0404), context=URL query 確證, output squeeze=state buffer 直讀, round-level 端到端驗算 (MAIN 仍有隱藏 RF[13] 寫入源待解)。]
+
+
+
+
+=== Journal Entry 2026-04-27T05:22:43.056990+00:00 ===
+2026-04-27-05-22-42-douyin-medusa-v31m-arx-sponge-complete.txt
+[抖音 X-Medusa v31m 逆向工程: v44-v88 共 44 輪 Frida 實驗, 完成 Layer 1 ARX sponge permutation 之 MAIN/FRONT/TAIL/Init 全操作序列提取, 含 nilpotent 數學矛盾之發現與解決 (ADD@0x2b0404), context=URL query 確證, output squeeze=state buffer 直讀, round-level 端到端驗算 (MAIN 仍有隱藏 RF[13] 寫入源待解→已解=key schedule via aliased pointer), 0x2c6230 逐指令反彙確認為 TABLE_LOOKUP+COPY+混淆 (非PRNG), entry table bytecodes dump 確認全 48 triples 恆定。]
+
+
+
+
+=== Journal Entry 2026-04-27T05:48:25.205565+00:00 ===
+2026-04-27-05-48-24-douyin-medusa-v31m-arx-sponge-complete.txt
+[抖音 X-Medusa v31m 逆向工程: v44-v89 共 45 輪 Frida 實驗, 完成 Layer 1 ARX sponge permutation 之 MAIN/FRONT/TAIL/Init 全操作序列提取, 含 nilpotent 數學矛盾之發現與解決 (ADD@0x2b0404), context=URL query 確證, output squeeze=state buffer 直讀, round-level 端到端驗算 (MAIN 仍有隱藏 RF[13] 寫入源待解→已解=key schedule via aliased pointer), 0x2c6230 逐指令反彙確認為 TABLE_LOOKUP+COPY+混淆 (非PRNG), entry table bytecodes dump 確認全 48 triples 恆定。]
+
+
+
+
+=== Journal Entry 2026-04-27T11:50:31.876839+00:00 ===
+2026-04-27-11-50-31-douyin-medusa-v31m-v44-v99-complete.txt
+[抖音 X-Medusa v31m 逆向工程: v44-v99 共 55 輪 Frida 實驗, 完成 Layer 1 ARX sponge permutation 全操作序列提取 (MAIN/FRONT/TAIL/Init), key schedule (0x2c6230 TABLE_LOOKUP+COPY+ADD_IMM via aliased pointer), output pipeline (BODY=raw sponge, no Layer 2/3 in v31m), HEAD formula (SM3 XOR counter), entry table bytecodes (build-time constants), MAIN model 驗算 (12/32 with KS — 有遺漏操作), MID 公式在 v31m 中非 MD5 (未解)。]
+
+
+
+
+=== Journal Entry 2026-04-27T16:05:25.408884+00:00 ===
+2026-04-27-16-05-24-douyin-medusa-v31m-v44-v109-complete.txt
+[抖音 X-Medusa v31m 逆向工程: v44-v109 共 65 輪 Frida 實驗, 完成 Layer 1 ARX sponge permutation 全操作序列提取 (MAIN/FRONT/TAIL/Init), key schedule (0x2c6230 TABLE_LOOKUP+COPY+ADD_IMM via aliased pointer), output pipeline (BODY=raw sponge, no Layer 2/3 in v31m), HEAD formula (SM3 XOR counter), entry table bytecodes (build-time constants), MAIN model 驗算 (47/47 with observed KS values), KS compound 14/17 formulas cracked (ROL+COPY+counters), 0x2c6230 intermediate isolation via h=169 hook — RF[14] only changed by 0x2c6230, RF[5,12,13,16] unchanged. MID 公式在 v31m 中非 MD5 (未解)。]
+
+
+
+
+=== Journal Entry 2026-04-27T16:09:42.639130+00:00 ===
+2026-04-27-16-09-41-douyin-medusa-v31m-v44-v109-complete.txt
+[抖音 X-Medusa v31m 逆向工程完整記錄: v44-v109 共 65 輪 Frida 實驗。涵蓋 Layer 1 ARX sponge permutation 全操作序列提取、key schedule 破解(14/17 公式含 ROL+COPY+counters)、output pipeline 確證(BODY=raw sponge, 無 Layer 2/3)、HEAD formula (SM3 XOR counter)、entry table bytecodes、MAIN model 47/47 驗算、0x2c6230 隔離(只改 RF[14])、MID 公式在 v31m 中非 MD5(未解)。]
+
+
+
+
+=== Journal Entry 2026-04-28T11:49:13.262178+00:00 ===
+2026-04-28-11-49-12-douyin-medusa-v31m-v103-v125.txt
+[抖音 X-Medusa v31m 逆向工程 v103-v125: Sponge permutation 離線模擬器建構與驗證。涵蓋 MAIN model 47/47 驗算、KS compound 17/17 完整歸因、20-handler sponge round 全 34 operations 解碼、離線模擬器 1932/1932 RF computations 通過驗證、S4.0 RF[16] 之 4.3M formula exhaustive search (確定為 memory read)。含完整 handler table、entry table bytecodes、S-BOX session constants。]
+
+
+
+
+=== Journal Entry 2026-04-28T15:46:22.202575+00:00 ===
+2026-04-28-15-46-21-douyin-medusa-v31m-v103-v128.txt
+[抖音 X-Medusa v31m 逆向工程 v103-v128: Sponge permutation 離線模擬器建構、驗證、及 MAJ(RF[29],RF[20],RF[28]) 公式破解。涵蓋 MAIN model 47/47 驗算、KS compound 17/17 完整歸因、20-handler sponge round 全 34 operations 解碼、離線模擬器 1932/1932 RF computations 通過驗證、S4.0 RF[16] 之 4.3M formula exhaustive search 後確定為 MAJ 函數。含完整 handler table、entry table bytecodes、S-BOX session constants、MID 公式待攻克。]
+
+
+
+
+=== Journal Entry 2026-04-28T15:48:35.938321+00:00 ===
+2026-04-28-15-48-35-douyin-medusa-v31m-v103-v129.txt
+[抖音 X-Medusa v31m 逆向工程 v103-v129: Sponge permutation 離線模擬器建構、驗證、MAJ(RF[29],RF[20],RF[28]) 公式破解、及 MID 公式攻克準備。涵蓋 MAIN model 47/47 驗算、KS compound 17/17 完整歸因、20-handler sponge round 全 34 operations 解碼、離線模擬器 1932/1932 RF computations 通過驗證、S4.0 RF[16] 之 4.3M formula exhaustive search 後確定為 MAJ 函數、h=610 反彙為 inline ADD+ORR、h=96 handler table alias 排除、h=105 bytecodes 擒拿。含完整 handler table、entry table bytecodes、S-BOX session constants。MID 公式攻克開始。]
+
+
+
+
+=== Journal Entry 2026-04-29T05:36:34.330319+00:00 ===
+2026-04-29-05-36-33-douyin-medusa-v31m-v129-v130-mid-url-absorption.txt
+[抖音 X-Medusa v31m 逆向工程 v129-v130: MID 公式確認已解（非攻克，乃發掘既有成果）、URL absorption rate buffer 解碼（RF[9]=sponge state buffer, 64B URL block match）、h=169 CL handler 反彙編開始。涵蓋 S-BOX session constant 分析、KS CL 讀取機制探究。]
+
+
+
+
+=== Journal Entry 2026-04-29T05:55:18.788222+00:00 ===
+2026-04-29-05-55-17-douyin-medusa-v31m-v129-v131-mid-url-sbox-solved.txt
+[抖音 X-Medusa v31m 逆向工程 v129-v131: MID 公式確認已解（非攻克，乃發掘既有成果）、URL absorption rate buffer 解碼（RF[9]=sponge state buffer, 64B URL block match）、KS S-BOX 確認為 SM3 round constants (dead code)、h=169 CL handler 反彙編確認為 COPY。涵蓋 S-BOX session constant 分析、KS CL 讀取機制探究、sign counter 增量開始探查。]
+
+
+
+
+=== Journal Entry 2026-04-29T11:38:02.490343+00:00 ===
+2026-04-29-11-38-01-douyin-medusa-v129-v133-audit-six-param.txt
+[抖音 X-Medusa v31m 逆向工程 v129-v133 + six_param 实时校验工具开发 + 全算法残缺严审。涵盖: MID 公式确认、URL absorption 解码、KS S-BOX = SM3 dead code、sign counter 分析、端到端校验脚本、six_param Frida+Python 桥接工具、HEAD = SHA-1(12B) 非 SM3 重大发现、Block C 部分已解(POST=MD5)、transcript 溯源审计(3项文档滞后 vs 4项真空缺)。]
+
+
+
+
+=== Journal Entry 2026-04-29T11:48:59.546388+00:00 ===
+2026-04-29-11-48-58-douyin-medusa-v129-v133-six-param-audit.txt
+[抖音 X-Medusa v31m 逆向工程 v129-v133 + six_param 实时校验工具开发 + 全算法残缺严审 + HEAD=SHA-1(12B) 重大发现 + transcript 溯源审计。涵盖: MID 公式确认、URL absorption 解码、KS S-BOX = SM3 dead code、sign counter 分析、端到端校验脚本、six_param Frida+Python 桥接工具、HEAD = SHA-1(12B) 非 SM3 重大发现、Block C 部分已解(POST=MD5)、transcript 溯源审计(3项文档滞后 vs 4项真空缺)、session_4B = device constant 发现。]
+
+
+
+
+=== Journal Entry 2026-04-29T16:25:46.476297+00:00 ===
+2026-04-29-16-25-45-douyin-medusa-v129-v134b-six-param-blockc.txt
+[抖音 X-Medusa v31m 逆向工程 v129-v134b 完整記錄：HEAD 公式三次糾錯最終攻克 (SHA-1⊕K⊕C 60/60)、six_param 六元全勝 (v6: 28/28 M✓)、session_4B per-aid device constant 發現、K[4:20] 跨 session 恆定確認、Block C (GET) 攻堅準備。含大量 Frida 腳本、Python bridge、audit 文檔迭代。]
+
+
+
+
+=== Journal Entry 2026-04-30T05:31:59.945056+00:00 ===
+2026-04-30-05-31-59-douyin-medusa-v129-v134b-six-param-blockc.txt
+[抖音 X-Medusa v31m 逆向工程完整記錄：HEAD 公式三次糾錯最終攻克 (SHA-1⊕K⊕C 60/60)、six_param 六元全勝 (v6: 28/28 M✓)、session_4B per-aid device constant 發現、K[4:20] 跨 session 恆定確認、Block C (GET) 攻堅突破 (session constant! 非 per-sign hash)。含大量 Frida 腳本、Python bridge、audit 文檔迭代。]
+
+
+
+
+=== Journal Entry 2026-04-30T05:52:08.060032+00:00 ===
+2026-04-30-05-52-07-douyin-medusa-v129-v134b-blockc-six-param.txt
+[抖音 X-Medusa v31m 逆向工程完整記錄：HEAD SHA-1⊕K⊕C 公式攻克(60/60)、six_param 六元全勝(v6: 28/28 M✓)、session_4B per-aid device constant、K[4:20] 跨 session 恆定、Block C (GET) session constant 突破(12/12)、six_param_offline.py 審校更新。含 Frida 腳本、Python bridge、audit 文檔迭代。]
+
+
+
